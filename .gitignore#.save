@@ -1,0 +1,14 @@
+
+nano .gitignore target/
+.idea/
+.vscode/
+application.properties
+.env
+*.iml
+*.iws
+*.ipr
+*.pem
+*.key
+.DS_Store
+Thumbs.db rm .gitignore*
+

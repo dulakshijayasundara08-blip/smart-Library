@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Smart Digital Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-layout">
+    <aside class="sidebar admin-side">
+        <div class="sidebar-brand"><i class="fa-solid fa-user-shield"></i> Admin Panel</div>
+        <ul class="sidebar-menu">
+            <li class="active" onclick="switchAdminTab('manage-books')"><i class="fa-solid fa-book"></i> Manage Books</li>
+            <li onclick="switchAdminTab('manage-users')"><i class="fa-solid fa-users"></i> Manage Users</li>
+            <li onclick="switchAdminTab('manage-exchanges')"><i class="fa-solid fa-retweet"></i> Book Exchanges</li>
+            <li onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div id="manage-books" class="admin-tab active">
+            <div class="header-action">
+                <h3>Catalog Management</h3>
+                <button class="btn-add-new" onclick="openBookFormModal()">+ Add New Book</button>
+            </div>
+
+            <div id="bookFormContainer" class="admin-form-card" style="display:none;">
+                <h4 id="formTitle">Create/Edit Catalog Item</h4>
+                <div class="form-grid-3">
+                    <input type="text" id="bookTitle" placeholder="Title">
+                    <input type="text" id="bookAuthor" placeholder="Author">
+                    <input type="text" id="bookCategory" placeholder="Category (Science, Fiction etc.)">
+                    <input type="text" id="bookCover" placeholder="Cover Image URL">
+                    <input type="text" id="bookPdf" placeholder="PDF URL">
+                    <textarea id="bookDesc" placeholder="Description Description" style="grid-column: span 3;"></textarea>
+                </div>
+                <div style="margin-top: 15px;">
+                    <button onclick="saveBook()" class="btn-submit">Save Product</button>
+                    <button onclick="closeBookFormModal()" class="btn-cancel">Cancel</button>
+                </div>
+            </div>
+
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adminBooksTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="manage-users" class="admin-tab">
+            <h3>Registered Users Registry</h3>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>System Role</th>
+                    </tr>
+                </thead>
+                <tbody id="adminUsersTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="manage-exchanges" class="admin-tab">
+            <h3>Global Book Exchange Tracking</h3>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Book</th>
+                        <th>Location</th>
+                        <th>Notes</th>
+                        <th>Current Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="adminExchangeTableBody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
